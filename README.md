@@ -101,7 +101,7 @@ Under udvikling kan man køre `npm start` og `npm run watch:theme-json` i hver s
 
 Udviklingsfilerne skal ikke med på et live site. Det gælder især `node_modules`, som fylder flere hundrede MB. `npm run zip` pakker derfor kun de filer og mapper, der står under `"files"` i `package.json`: den byggede kode, skabelonerne, `docs/` (så forklaringerne følger med) og temaets PHP-, CSS- og JSON-filer. `src/`, `scripts/` og `package.json` udelades.
 
-Skal de studerende kunne bygge temaet selv, skal de have hele mappen, fx fra et Git-repository eller den oprindelige zip-fil.
+For at bygge temaet selv, skal du have hele denne mappe, fx fra et Git-repository eller den oprindelige zip-fil.
 
 ### Om build-mappen
 
