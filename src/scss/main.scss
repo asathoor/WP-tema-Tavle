@@ -1,0 +1,81 @@
+// ============================================================================
+// main.scss – temaets egen CSS
+// ----------------------------------------------------------------------------
+// I et bloktema styres næsten alt udseende fra theme.json.
+// Her skrives kun det, theme.json ikke kan udtrykke.
+//
+// Filen oversættes til build/index.css med "npm run build".
+// Redigér ALDRIG build/index.css direkte – den overskrives ved næste build.
+// ============================================================================
+
+// @use henter variablerne fra _variables.scss (uden "_" og ".scss").
+// "as *" betyder, at vi kan skrive $fokus-bredde i stedet for
+// variables.$fokus-bredde.
+@use "variables" as *;
+
+// ----------------------------------------------------------------------------
+// SYNLIGT FOKUS (WCAG 2.4.7)
+// Når man navigerer med tastaturet (Tab-tasten), skal man altid kunne se,
+// hvor man er. :focus-visible viser kun rammen ved tastaturnavigation,
+// ikke når man klikker med musen.
+// :where() giver selektoren specificitet 0, så redaktørens egne valg vinder.
+// ----------------------------------------------------------------------------
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: $fokus-bredde solid var(--wp--preset--color--blue);
+	outline-offset: $fokus-afstand;
+}
+
+// ----------------------------------------------------------------------------
+// KLIKFLADER (WCAG 2.5.8)
+// Menupunkter skal være mindst 24 × 24 pixels, så de er lette at ramme.
+//
+// Eksempel på SCSS-"nesting": &__ sættes sammen med forælderens navn.
+// .wp-block-navigation-item { &__content { } }
+// bliver til .wp-block-navigation-item__content { }
+// ----------------------------------------------------------------------------
+.wp-block-navigation {
+
+	.wp-block-navigation-item {
+
+		&__content {
+			padding-block: 0.5rem;
+			min-height: $min-klikflade;
+			min-width: $min-klikflade;
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// BILLEDER
+// Sørger for, at billeder bevarer deres proportioner, når de skaleres ned.
+// ----------------------------------------------------------------------------
+img {
+	height: auto;
+}
+
+// ----------------------------------------------------------------------------
+// DARK MODE
+// ----------------------------------------------------------------------------
+
+// Alle farver i paletten (deres slugs fra theme.json).
+$farver: base, blue-light, red-light, green-light, yellow-light, purple-light,
+	contrast, blue, red, green, purple, orange, teal, gray;
+
+// Giver hver palet-variabel sin mørke værdi.
+@mixin moerk-palet {
+	@each $slug in $farver {
+		--wp--preset--color--#{$slug}: var(--wp--custom--dark--#{$slug});
+	}
+}
+
+// Fortæller browseren, at siden understøtter begge tilstande,
+// så scrollbarer og formularfelter også bliver mørke.
+:root {
+	color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		@include moerk-palet;
+	}
+}

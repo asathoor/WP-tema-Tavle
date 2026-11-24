@@ -1,0 +1,36 @@
+{
+	"name": "tavle",
+	"version": "1.1.0",
+	"description": "Et velkommenteret WordPress-bloktema til undervisning.",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": [
+		"build",
+		"docs",
+		"parts",
+		"patterns",
+		"templates",
+		"functions.php",
+		"style.css",
+		"theme.json",
+		"README.md"
+	],
+	"scripts": {
+		"build": "npm run build:theme-json && npm run check:contrast && npm run build:assets",
+		"build:theme-json": "node scripts/build-theme-json.mjs",
+		"build:assets": "wp-scripts build",
+		"check:contrast": "node scripts/check-contrast.mjs",
+		"start": "wp-scripts start",
+		"watch:theme-json": "node scripts/build-theme-json.mjs --watch",
+		"lint:css": "wp-scripts lint-style \"src/**/*.scss\"",
+		"lint:js": "wp-scripts lint-js src scripts",
+		"format": "wp-scripts format src scripts",
+		"zip": "npm run build && wp-scripts plugin-zip"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.0"
+	}
+}

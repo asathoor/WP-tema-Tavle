@@ -1,0 +1,398 @@
+// ============================================================================
+// theme.jsonc – TEMAETS INDSTILLINGER MED FORKLARINGER
+// ----------------------------------------------------------------------------
+// JSON tillader ikke kommentarer. WordPress kan derfor ikke læse en theme.json
+// med kommentarer i – hele filen ville blive ignoreret.
+//
+// Løsningen: Vi skriver i DENNE fil (theme.jsonc = "JSON with comments"), og
+// kommandoen
+//
+//     npm run build:theme-json      (eller blot: npm run build)
+//
+// fjerner kommentarerne og gemmer resultatet som theme.json i temaets rod.
+//
+// VIGTIGT: Redigér denne fil – ikke theme.json. Ændringer direkte i
+// theme.json bliver overskrevet ved næste build.
+//
+// Gemmer du ændringer fra Site Editoren, havner de i databasen, ikke i
+// nogen af filerne.
+// ============================================================================
+{
+	// $schema peger på den officielle beskrivelse af theme.json.
+	// Kodeeditorer som VS Code bruger den til autoudfyldning og til at
+	// advare om stavefejl i nøgler. WordPress selv ignorerer linjen.
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+
+	// version 3 er det nyeste format (kræver WordPress 6.6 eller nyere).
+	// Versionen bestemmer bl.a., hvordan standardværdier flettes sammen.
+	"version": 3,
+
+	// ==========================================================================
+	// SETTINGS – hvilke VALGMULIGHEDER redaktøren får i editoren.
+	// Settings styrer ikke udseendet direkte. De bestemmer, hvilke knapper,
+	// paneler og forudindstillinger (presets) der findes.
+	//
+	// Dette tema er bevidst så lidt restriktivt som muligt: Alt, WordPress
+	// tilbyder, er slået til.
+	// ==========================================================================
+	"settings": {
+
+		// appearanceTools er en "hovedafbryder", der slår en række værktøjer til
+		// på én gang: kanter (border), afstande (margin, padding, blockGap),
+		// linjehøjde, minimumshøjde, billedformat (aspect ratio),
+		// klæbende position (sticky), baggrundsbilleder og linkfarver.
+		"appearanceTools": true,
+
+		// Gør det muligt at lade blokke med "fuld bredde" gå helt ud til kanten,
+		// selvom siden har luft (padding) i siderne. Uden denne indstilling
+		// ville fuldbredde-blokke blive skubbet ind af sidens padding.
+		"useRootPaddingAwareAlignments": true,
+
+		// ------------------------------------------------------------------------
+		// LAYOUT – standardbredder for indhold.
+		// contentSize: almindelig tekstbredde (ca. 70 tegn pr. linje = god læsbarhed).
+		// wideSize: bredden når en blok er sat til "Bred".
+		// allowEditing / allowCustomContentAndWideSize: redaktøren må ændre
+		// bredderne på den enkelte gruppe-blok.
+		// ------------------------------------------------------------------------
+		"layout": {
+			"contentSize": "45rem",
+			"wideSize": "75rem",
+			"allowEditing": true,
+			"allowCustomContentAndWideSize": true
+		},
+
+		// ------------------------------------------------------------------------
+		// FARVER
+		// ------------------------------------------------------------------------
+		"color": {
+			// WordPress' egne standardfarver, -gradienter og duotone-filtre
+			// vises SAMMEN med temaets farver (under overskriften "Standard").
+			// Bemærk: WordPress' standardfarver er ikke afstemt efter
+			// kontrastkrav. Se README.md, afsnittet om tilgængelighed.
+			"defaultPalette": true,
+			"defaultGradients": true,
+			"defaultDuotone": true,
+
+			// Redaktøren må vælge helt egne farver, gradienter og duotone.
+			"custom": true,
+			"customGradient": true,
+			"customDuotone": true,
+
+			// Farver kan sættes separat for links, overskrifter, knapper og
+			// billedtekster inde i en blok.
+			"link": true,
+			"heading": true,
+			"button": true,
+			"caption": true,
+
+			// Temaets egen palet.
+			// Hver farve får en CSS-variabel ud fra sin slug, fx:
+			//   "slug": "blue"  →  var(--wp--preset--color--blue)
+			// og CSS-klasser som .has-blue-color og .has-blue-background-color.
+			//
+			// Paletten består af to grupper, designet så ENHVER mørk farve kan
+			// stå på ENHVER lys farve og opfylde WCAG 2.1 AA (mindst 4,5:1).
+			// Se den fulde kontrasttabel i README.md.
+			"palette": [
+				// --- Lyse farver: til baggrunde ---
+				{ "slug": "base",         "name": "Hvid",        "color": "#ffffff" },
+				{ "slug": "blue-light",   "name": "Lyseblå",     "color": "#e5effa" },
+				{ "slug": "red-light",    "name": "Lyserød",     "color": "#fbe9e7" },
+				{ "slug": "green-light",  "name": "Lysegrøn",    "color": "#e5f3e9" },
+				{ "slug": "yellow-light", "name": "Lysegul",     "color": "#fff3cc" },
+				{ "slug": "purple-light", "name": "Lyselilla",   "color": "#f0eaf7" },
+
+				// --- Mørke farver: til tekst, eller til baggrund med hvid tekst ---
+				{ "slug": "contrast",     "name": "Næsten sort", "color": "#1c1c1e" },
+				{ "slug": "blue",         "name": "Blå",         "color": "#1a5fb4" },
+				{ "slug": "red",          "name": "Rød",         "color": "#b3261e" },
+				{ "slug": "green",        "name": "Grøn",        "color": "#1d7a3a" },
+				{ "slug": "purple",       "name": "Lilla",       "color": "#6c3fa3" },
+				{ "slug": "orange",       "name": "Orange",      "color": "#a64b00" },
+				{ "slug": "teal",         "name": "Petrol",      "color": "#006b75" },
+				{ "slug": "gray",         "name": "Grå",         "color": "#595959" }
+			],
+
+			// Temaets egne gradienter, bygget af de lyse farver, så de kan
+			// bruges som baggrund for mørk tekst.
+			"gradients": [
+				{
+					"slug": "blue-to-purple-light",
+					"name": "Lyseblå til lyselilla",
+					"gradient": "linear-gradient(135deg, #e5effa 0%, #f0eaf7 100%)"
+				},
+				{
+					"slug": "yellow-to-red-light",
+					"name": "Lysegul til lyserød",
+					"gradient": "linear-gradient(135deg, #fff3cc 0%, #fbe9e7 100%)"
+				}
+			]
+		},
+
+		// ------------------------------------------------------------------------
+		// TYPOGRAFI
+		// ------------------------------------------------------------------------
+		"typography": {
+			// WordPress' standard-skriftstørrelser (Small, Medium, Large ...) er med.
+			"defaultFontSizes": true,
+			// Redaktøren må skrive en vilkårlig skriftstørrelse.
+			"customFontSize": true,
+			// "Flydende" typografi: store skriftstørrelser skrumper automatisk
+			// lidt på små skærme.
+			"fluid": true,
+
+			// Alle typografiske værktøjer er slået til.
+			"dropCap": true,       // Stort forbogstav i afsnit
+			"fontStyle": true,     // Kursiv
+			"fontWeight": true,    // Fed / tynd
+			"letterSpacing": true, // Bogstavafstand
+			"lineHeight": true,    // Linjehøjde
+			"textDecoration": true,// Understregning, gennemstregning
+			"textTransform": true, // VERSALER, små bogstaver
+			"writingMode": true,   // Lodret tekst
+
+			// --------------------------------------------------------------------
+			// SKRIFTTYPER
+			// Ingen af disse kræver download. De bruger skrifttyper, der allerede
+			// findes i browseren eller på computeren. Derfor ingen "fontFace".
+			//
+			// Gruppe 1 er CSS' generiske skriftfamilier. Browseren vælger selv,
+			// hvilken konkret skrifttype der bruges. De virker altid.
+			//
+			// Gruppe 2 er "web-sikre" skrifttyper, som er installeret på de
+			// fleste computere. Hvis en mangler, bruges skrifttyperne efter
+			// kommaet (fallback) – til sidst altid en generisk familie.
+			//
+			// Navne med mellemrum skal i anførselstegn i CSS, fx "Times New Roman".
+			// I JSON skrives anførselstegnet som \" .
+			//
+			// Flere skrifttyper (fx fra Google Fonts) kan tilføjes i editorens
+			// skrifttypebibliotek (Font Library), som ikke er slået fra.
+			// --------------------------------------------------------------------
+			"fontFamilies": [
+				// --- Gruppe 1: generiske familier ---
+				{ "slug": "system-ui",     "name": "System (system-ui)",        "fontFamily": "system-ui, sans-serif" },
+				{ "slug": "sans-serif",    "name": "Sans-serif (generisk)",     "fontFamily": "sans-serif" },
+				{ "slug": "serif",         "name": "Serif (generisk)",          "fontFamily": "serif" },
+				{ "slug": "monospace",     "name": "Monospace (generisk)",      "fontFamily": "monospace" },
+				{ "slug": "cursive",       "name": "Cursive (generisk)",        "fontFamily": "cursive" },
+				{ "slug": "fantasy",       "name": "Fantasy (generisk)",        "fontFamily": "fantasy" },
+				// ui-* bruger styresystemets egne skrifter. Understøttes især
+				// af Safari – andre browsere falder tilbage til fallback.
+				{ "slug": "ui-sans-serif", "name": "UI Sans-serif",             "fontFamily": "ui-sans-serif, system-ui, sans-serif" },
+				{ "slug": "ui-serif",      "name": "UI Serif",                  "fontFamily": "ui-serif, serif" },
+				{ "slug": "ui-monospace",  "name": "UI Monospace",              "fontFamily": "ui-monospace, monospace" },
+				{ "slug": "ui-rounded",    "name": "UI Rounded",                "fontFamily": "ui-rounded, system-ui, sans-serif" },
+				{ "slug": "math",          "name": "Math (matematik)",          "fontFamily": "math, serif" },
+				{ "slug": "emoji",         "name": "Emoji",                     "fontFamily": "emoji, sans-serif" },
+				{ "slug": "fangsong",      "name": "Fangsong (kinesisk)",       "fontFamily": "fangsong, serif" },
+
+				// --- Gruppe 2: web-sikre skrifttyper ---
+				{ "slug": "arial",           "name": "Arial",           "fontFamily": "Arial, Helvetica, sans-serif" },
+				{ "slug": "helvetica",       "name": "Helvetica",       "fontFamily": "Helvetica, Arial, sans-serif" },
+				{ "slug": "verdana",         "name": "Verdana",         "fontFamily": "Verdana, Geneva, sans-serif" },
+				{ "slug": "tahoma",          "name": "Tahoma",          "fontFamily": "Tahoma, Verdana, sans-serif" },
+				{ "slug": "trebuchet-ms",    "name": "Trebuchet MS",    "fontFamily": "\"Trebuchet MS\", Helvetica, sans-serif" },
+				{ "slug": "georgia",         "name": "Georgia",         "fontFamily": "Georgia, serif" },
+				{ "slug": "times-new-roman", "name": "Times New Roman", "fontFamily": "\"Times New Roman\", Times, serif" },
+				{ "slug": "palatino",        "name": "Palatino",        "fontFamily": "\"Palatino Linotype\", Palatino, \"Book Antiqua\", serif" },
+				{ "slug": "garamond",        "name": "Garamond",        "fontFamily": "Garamond, serif" },
+				{ "slug": "courier-new",     "name": "Courier New",     "fontFamily": "\"Courier New\", Courier, monospace" },
+				{ "slug": "comic-sans-ms",   "name": "Comic Sans MS",   "fontFamily": "\"Comic Sans MS\", \"Comic Sans\", cursive" },
+				{ "slug": "impact",          "name": "Impact",          "fontFamily": "Impact, \"Arial Narrow Bold\", sans-serif" },
+				{ "slug": "brush-script-mt", "name": "Brush Script MT", "fontFamily": "\"Brush Script MT\", cursive" }
+			]
+		},
+
+		// ------------------------------------------------------------------------
+		// AFSTANDE
+		// ------------------------------------------------------------------------
+		"spacing": {
+			// WordPress' standard-afstande (trinene 20 til 80) er med.
+			"defaultSpacingSizes": true,
+			// Redaktøren må skrive en vilkårlig afstand ...
+			"customSpacingSize": true,
+			// ... i alle disse enheder.
+			"units": [ "px", "em", "rem", "vh", "vw", "%" ]
+		},
+
+		// WordPress' standard-skygger er med.
+		"shadow": {
+			"defaultPresets": true
+		},
+
+		// Baggrundsbilleder må bruges, og deres størrelse må justeres.
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+
+		// "Klik for at forstørre" på billeder kan slås til pr. billede.
+		// Det er slået fra som udgangspunkt, men redaktøren må ændre det.
+		"lightbox": {
+			"enabled": false,
+			"allowEditing": true
+		}
+	},
+
+	// ==========================================================================
+	// STYLES – temaets STANDARD-UDSEENDE.
+	// Alt her kan redaktøren ændre i Site Editoren under "Stilarter".
+	// Værdier som "var(--wp--preset--color--base)" henviser til presets
+	// defineret ovenfor under settings.
+	// ==========================================================================
+	"styles": {
+		// Hele sidens baggrund og tekstfarve.
+		"color": {
+			"background": "var(--wp--preset--color--base)",
+			"text": "var(--wp--preset--color--contrast)"
+		},
+
+		// Brødtekst: systemets skrift, 18 px (1.125rem) og luftig linjehøjde.
+		// En linjehøjde på mindst 1,5 anbefales af WCAG (succeskriterie 1.4.12).
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--system-ui)",
+			"fontSize": "1.125rem",
+			"lineHeight": "1.6"
+		},
+
+		// Luft i siderne (som skrumper på små skærme) og afstand mellem blokke.
+		"spacing": {
+			"padding": {
+				"left": "clamp(1rem, 4vw, 2rem)",
+				"right": "clamp(1rem, 4vw, 2rem)"
+			},
+			"blockGap": "1.5rem"
+		},
+
+		// ------------------------------------------------------------------------
+		// ELEMENTS – udseende for HTML-elementer på tværs af alle blokke.
+		// ------------------------------------------------------------------------
+		"elements": {
+			// Links er blå OG understregede. Understregningen er vigtig:
+			// Links må ikke kun kunne kendes på farven (WCAG 1.4.1).
+			"link": {
+				"color": { "text": "var(--wp--preset--color--blue)" },
+				"typography": { "textDecoration": "underline" },
+				// ":hover" = når musen holdes over linket.
+				":hover": {
+					"color": { "text": "var(--wp--preset--color--contrast)" }
+				}
+			},
+
+			// Fælles for alle overskrifter (h1–h6).
+			"heading": {
+				"typography": { "fontWeight": "700", "lineHeight": "1.2" }
+			},
+
+			// Hver overskriftsniveau får sin egen størrelse. clamp(min, ideel, max)
+			// gør størrelsen flydende mellem en mindste og største værdi.
+			"h1": { "typography": { "fontSize": "clamp(2rem, 1.5rem + 2.5vw, 3rem)" } },
+			"h2": { "typography": { "fontSize": "clamp(1.625rem, 1.3rem + 1.5vw, 2.25rem)" } },
+			"h3": { "typography": { "fontSize": "clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem)" } },
+			"h4": { "typography": { "fontSize": "1.25rem" } },
+			"h5": { "typography": { "fontSize": "1.125rem" } },
+			"h6": { "typography": { "fontSize": "1rem" } },
+
+			// Knapper: hvid tekst på blå (6,3:1). Mørkere ved hover.
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--blue)",
+					"text": "var(--wp--preset--color--base)"
+				},
+				"border": { "radius": "0.25rem" },
+				":hover": {
+					"color": { "background": "var(--wp--preset--color--contrast)" }
+				}
+			},
+
+			// Billedtekster i grå (7:1 på hvid).
+			"caption": {
+				"color": { "text": "var(--wp--preset--color--gray)" },
+				"typography": { "fontSize": "0.875rem" }
+			}
+		},
+
+		// ------------------------------------------------------------------------
+		// BLOCKS – udseende for bestemte blokke.
+		// Nøglen er blokkens navn, fx "core/post-date".
+		// ------------------------------------------------------------------------
+		"blocks": {
+			// Datoer og kategorier vises i grå og lidt mindre skrift.
+			"core/post-date": {
+				"color": { "text": "var(--wp--preset--color--gray)" },
+				"typography": { "fontSize": "0.875rem" }
+			},
+			"core/post-terms": {
+				"typography": { "fontSize": "0.875rem" }
+			},
+
+			// Sitetitlen: fed, og linket er uden understregning, fordi det står
+			// i headeren, hvor det tydeligt er et link til forsiden.
+			"core/site-title": {
+				"typography": { "fontWeight": "700", "fontSize": "1.25rem" },
+				"elements": {
+					"link": {
+						"color": { "text": "var(--wp--preset--color--contrast)" },
+						"typography": { "textDecoration": "none" }
+					}
+				}
+			},
+
+			// Citater får en blå streg i venstre side.
+			"core/quote": {
+				"border": {
+					"left": { "color": "var(--wp--preset--color--blue)", "width": "4px", "style": "solid" }
+				},
+				"spacing": { "padding": { "left": "1.25rem" } }
+			}
+		}
+	},
+
+	// ==========================================================================
+	// TEMPLATE PARTS – genbrugelige dele som header og footer.
+	// "name" skal matche filnavnet i mappen /parts (uden .html).
+	// "area" fortæller WordPress, hvilken slags del det er.
+	// ==========================================================================
+	"templateParts": [
+		{ "name": "header", "title": "Header", "area": "header" },
+		{ "name": "footer", "title": "Footer", "area": "footer" }
+	],
+
+	// ==========================================================================
+	// CUSTOM TEMPLATES – ekstra skabeloner redaktøren kan vælge for en side.
+	// "name" skal matche filnavnet i mappen /templates (uden .html).
+	// "postTypes" angiver, hvilke indholdstyper skabelonen kan bruges til.
+	// ==========================================================================
+	"customTemplates": [
+		{ "name": "page-no-title", "title": "Side uden titel", "postTypes": [ "page" ] }
+	]
+,
+		// --------------------------------------------------------------------
+		// MØRK TILSTAND
+		// Alt under "custom" bliver til CSS-variabler, fx:
+		//   "dark": { "base": ... }  →  var(--wp--custom--dark--base)
+		// Nøglerne SKAL hedde det samme som palettens slugs, ellers finder
+		// main.scss dem ikke.
+		// --------------------------------------------------------------------
+		"custom": {
+			"dark": {
+				"base": "#18181a",
+				"blue-light": "#172338",
+				"red-light": "#361b18",
+				"green-light": "#172d1f",
+				"yellow-light": "#2f2810",
+				"purple-light": "#271f36",
+				"contrast": "#ececec",
+				"blue": "#8db8f0",
+				"red": "#f2a39b",
+				"green": "#86cf9c",
+				"purple": "#c4a8ec",
+				"orange": "#efb072",
+				"teal": "#70ccd5",
+				"gray": "#a9a9a9"
+			}
+		}
+	}
+		

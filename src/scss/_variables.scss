@@ -1,0 +1,26 @@
+// ============================================================================
+// _variables.scss – SCSS-variabler
+// ----------------------------------------------------------------------------
+// Filer, der starter med "_", er "partials". De bliver ikke til egne CSS-filer,
+// men importeres i main.scss.
+//
+// Bemærk forskellen på to slags variabler:
+//
+//   $fokus-bredde                     SCSS-variabel. Findes kun under build og
+//                                     erstattes med sin værdi i den færdige CSS.
+//
+//   var(--wp--preset--color--blue)    CSS-variabel (custom property). Lever i
+//                                     browseren og kommer fra theme.json. Ændrer
+//                                     redaktøren farven i Site Editoren, følger
+//                                     den med automatisk.
+//
+// Farver skal derfor ALTID hentes fra theme.json via CSS-variabler – ellers
+// kan redaktøren ikke ændre dem.
+// ============================================================================
+
+// Fokusrammens tykkelse og afstand til elementet.
+$fokus-bredde: 3px;
+$fokus-afstand: 2px;
+
+// WCAG 2.5.8: Mindste størrelse på klikflader.
+$min-klikflade: 24px;

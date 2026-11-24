@@ -1,0 +1,93 @@
+# ============================================================================
+# .gitignore – filer og mapper, som Git skal ignorere
+# ----------------------------------------------------------------------------
+# Hver linje er et mønster:
+#   mappe/      en mappe (og alt indhold)
+#   *.zip       alle filer, der ender på .zip
+#   !fil        undtagelse: medtag alligevel
+#   # tekst     en kommentar
+#
+# Filer, der ALLEREDE er committet, ignoreres ikke, selvom de tilføjes her.
+# De skal først fjernes fra Git med:  git rm --cached <fil>
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# Node.js
+# ----------------------------------------------------------------------------
+
+# Installerede pakker. Fylder flere hundrede MB og genskabes med "npm install".
+node_modules/
+
+# Logfiler, når npm, yarn eller pnpm fejler.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OBS: package-lock.json skal IKKE ignoreres. Den sikrer, at alle installerer
+# præcis de samme versioner af pakkerne.
+
+
+# ----------------------------------------------------------------------------
+# Build og værktøjer
+# ----------------------------------------------------------------------------
+
+# Zip-filer lavet med "npm run zip".
+*.zip
+
+# Midlertidige filer fra lint-værktøjerne.
+.eslintcache
+.stylelintcache
+.cache/
+
+# build/ og theme.json bliver genereret, men er IKKE ignoreret, fordi
+# WordPress skal bruge dem. Uden dem virker temaet ikke, hvis det hentes
+# direkte fra Git. Fjern # foran linjen nedenfor, hvis temaet altid bygges
+# inden brug, fx af en automatisk deploy.
+# build/
+
+
+# ----------------------------------------------------------------------------
+# Hemmeligheder
+# ----------------------------------------------------------------------------
+
+# Miljøfiler kan indeholde adgangskoder og API-nøgler.
+.env
+.env.*
+
+
+# ----------------------------------------------------------------------------
+# Styresystemer
+# ----------------------------------------------------------------------------
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+desktop.ini
+
+
+# ----------------------------------------------------------------------------
+# Kodeeditorer
+# ----------------------------------------------------------------------------
+
+# VS Code: personlige indstillinger ignoreres, men anbefalede udvidelser
+# deles, så alle på holdet får forslag til de samme.
+.vscode/*
+!.vscode/extensions.json
+
+# JetBrains (PhpStorm, WebStorm)
+.idea/
+
+# Vim og andre editorers midlertidige filer
+*.swp
+*.swo
+*~
+
+# Sublime Text
+*.sublime-workspace

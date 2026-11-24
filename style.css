@@ -1,0 +1,29 @@
+/*
+================================================================================
+STYLE.CSS – temaets "id-kort"
+--------------------------------------------------------------------------------
+WordPress læser kommentaren herunder for at finde temaets navn, version osv.
+Den SKAL stå øverst i style.css. Felterne vises under Udseende → Temaer.
+================================================================================
+
+Theme Name: Tavle
+Description: Et velkommenteret undervisningstema. Alle kreative valgmuligheder er slået til, alle browserens standardskrifter kan vælges, og farvepaletten opfylder WCAG 2.1 AA.
+Version: 1.1.0
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tavle
+*/
+
+/*
+--------------------------------------------------------------------------------
+Denne fil indeholder kun temaets oplysninger og INGEN CSS.
+
+Temaets egen CSS skrives i src/scss/main.scss og bygges til build/index.css
+med kommandoen:  npm run build
+
+Se README.md, afsnittet "Udvikling med Node.js".
+--------------------------------------------------------------------------------
+*/
