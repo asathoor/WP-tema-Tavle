@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Contact Form 7 – tilpasset temaet Tavle
+   Alle farver hentes fra Tavles palet, så de følger med i dark mode
+   og ændringer under Stilarter.
+   ========================================================================== */
+
+/* Formularens ramme */
+.wpcf7 {
+	max-width: 45rem;
+	padding: 1.5rem;
+	border: 2px solid var(--wp--preset--color--orange);
+	border-radius: 0.25rem;
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
+/* Labels over felterne */
+.wpcf7 label {
+	display: block;
+	font-weight: 600;
+}
+
+/* Indtastningsfelter – samme skrift og farver som resten af sitet */
+.wpcf7 :is(input[type="text"], input[type="email"], input[type="tel"],
+	input[type="url"], input[type="number"], input[type="date"],
+	select, textarea) {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 2.75rem;
+	margin-top: 0.25rem;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--wp--preset--color--gray); /* 7:1 – tydelig feltkant */
+	border-radius: 0.25rem;
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+	font: inherit;
+}
+
+.wpcf7 textarea {
+	min-height: 8rem;
+	resize: vertical;
+}
+
+/* Send-knappen – samme udseende som temaets knapper */
+.wpcf7 :is(input[type="submit"], input[type="button"]) {
+	min-height: 2.75rem;
+	padding: 0.6rem 1.2rem;
+	border: 0;
+	border-radius: 0.25rem;
+	background-color: var(--wp--preset--color--blue);
+	color: var(--wp--preset--color--base);
+	font: inherit;
+	cursor: pointer;
+}
+
+.wpcf7 :is(input[type="submit"], input[type="button"]):hover {
+	background-color: var(--wp--preset--color--contrast);
+}
+
+/* Fejl i et felt */
+.wpcf7 .wpcf7-not-valid {
+	border: 2px solid var(--wp--preset--color--red);
+}
+
+.wpcf7 .wpcf7-not-valid-tip {
+	margin-top: 0.25rem;
+	color: var(--wp--preset--color--red);
+	font-size: 0.875rem;
+}
+
+/* Beskeden efter afsendelse */
+.wpcf7 form .wpcf7-response-output {
+	margin: 1rem 0 0;
+	padding: 0.75rem 1rem;
+	border-width: 2px;
+	border-radius: 0.25rem;
+	color: var(--wp--preset--color--contrast);
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+	border-color: var(--wp--preset--color--green);
+	background-color: var(--wp--preset--color--green-light);
+}
+
+.wpcf7 form:is(.invalid, .unaccepted, .payment-required) .wpcf7-response-output {
+	border-color: var(--wp--preset--color--orange);
+	background-color: var(--wp--preset--color--yellow-light);
+}
+
+.wpcf7 form:is(.failed, .aborted, .spam) .wpcf7-response-output {
+	border-color: var(--wp--preset--color--red);
+	background-color: var(--wp--preset--color--red-light);
+}

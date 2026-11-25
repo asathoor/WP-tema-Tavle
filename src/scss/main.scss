@@ -12,6 +12,7 @@
 // "as *" betyder, at vi kan skrive $fokus-bredde i stedet for
 // variables.$fokus-bredde.
 @use "variables" as *;
+@use "cf7";
 
 // ----------------------------------------------------------------------------
 // SYNLIGT FOKUS (WCAG 2.4.7)
