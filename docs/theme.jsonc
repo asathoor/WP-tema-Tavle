@@ -233,6 +233,36 @@
 		"lightbox": {
 			"enabled": false,
 			"allowEditing": true
+		},
+
+		// ------------------------------------------------------------------------
+		// MØRK TILSTAND
+		// Alt under settings.custom bliver til CSS-variabler, fx:
+		//   "dark": { "base": ... }  →  var(--wp--custom--dark--base)
+		// Nøglerne SKAL hedde det samme som palettens slugs, ellers finder
+		// main.scss dem ikke.
+		//
+		// VIGTIGT: "custom" skal ligge HER, inde i "settings". Står den på
+		// øverste niveau i filen, ignorerer WordPress den, og variablerne
+		// bliver aldrig oprettet.
+		// ------------------------------------------------------------------------
+		"custom": {
+			"dark": {
+				"base":         "#18181a",
+				"blue-light":   "#172338",
+				"red-light":    "#361b18",
+				"green-light":  "#172d1f",
+				"yellow-light": "#2f2810",
+				"purple-light": "#271f36",
+				"contrast":     "#ececec",
+				"blue":         "#8db8f0",
+				"red":          "#f2a39b",
+				"green":        "#86cf9c",
+				"purple":       "#c4a8ec",
+				"orange":       "#efb072",
+				"teal":         "#70ccd5",
+				"gray":         "#a9a9a9"
+			}
 		}
 	},
 
@@ -368,31 +398,4 @@
 	"customTemplates": [
 		{ "name": "page-no-title", "title": "Side uden titel", "postTypes": [ "page" ] }
 	]
-,
-		// --------------------------------------------------------------------
-		// MØRK TILSTAND
-		// Alt under "custom" bliver til CSS-variabler, fx:
-		//   "dark": { "base": ... }  →  var(--wp--custom--dark--base)
-		// Nøglerne SKAL hedde det samme som palettens slugs, ellers finder
-		// main.scss dem ikke.
-		// --------------------------------------------------------------------
-		"custom": {
-			"dark": {
-				"base": "#18181a",
-				"blue-light": "#172338",
-				"red-light": "#361b18",
-				"green-light": "#172d1f",
-				"yellow-light": "#2f2810",
-				"purple-light": "#271f36",
-				"contrast": "#ececec",
-				"blue": "#8db8f0",
-				"red": "#f2a39b",
-				"green": "#86cf9c",
-				"purple": "#c4a8ec",
-				"orange": "#efb072",
-				"teal": "#70ccd5",
-				"gray": "#a9a9a9"
-			}
-		}
-	}
-		
+}

@@ -1,6 +1,6 @@
-# Øvelse 4: Menuen
+# Øvelse 4: Menuer
 
-**Du lærer:** At lave en menu, så læserne kan finde rundt, og at se, at den automatisk går igen på alle sider.
+**Du lærer:** At lave en eller flere menuer, så læserne kan finde rundt, og at se, at den automatisk går igen på alle sider.
 
 ## Prøv det
 
@@ -10,6 +10,7 @@
 4. Tilføj også et menupunkt, der fører til en af dine kategorier, fx "Rejser".
 5. Træk punkterne i den rækkefølge, du synes giver mest mening. Gem.
 6. Besøg bloggen i et privat vindue. Klik dig rundt mellem forsiden, et indlæg og siden "Om mig". Er menuen der hele tiden?
+7. Lav en ny menu med navigationsblokken i footeren. Denne gang skal den vises lodret. 
 
 ## Refleksion
 

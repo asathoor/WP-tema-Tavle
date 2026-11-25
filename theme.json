@@ -273,6 +273,24 @@
 		"lightbox": {
 			"enabled": false,
 			"allowEditing": true
+		},
+		"custom": {
+			"dark": {
+				"base": "#18181a",
+				"blue-light": "#172338",
+				"red-light": "#361b18",
+				"green-light": "#172d1f",
+				"yellow-light": "#2f2810",
+				"purple-light": "#271f36",
+				"contrast": "#ececec",
+				"blue": "#8db8f0",
+				"red": "#f2a39b",
+				"green": "#86cf9c",
+				"purple": "#c4a8ec",
+				"orange": "#efb072",
+				"teal": "#70ccd5",
+				"gray": "#a9a9a9"
+			}
 		}
 	},
 	"styles": {
@@ -431,23 +449,5 @@
 				"page"
 			]
 		}
-	],
-	"custom": {
-		"dark": {
-			"base": "#18181a",
-			"blue-light": "#172338",
-			"red-light": "#361b18",
-			"green-light": "#172d1f",
-			"yellow-light": "#2f2810",
-			"purple-light": "#271f36",
-			"contrast": "#ececec",
-			"blue": "#8db8f0",
-			"red": "#f2a39b",
-			"green": "#86cf9c",
-			"purple": "#c4a8ec",
-			"orange": "#efb072",
-			"teal": "#70ccd5",
-			"gray": "#a9a9a9"
-		}
-	}
+	]
 }

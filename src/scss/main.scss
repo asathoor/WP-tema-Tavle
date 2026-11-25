@@ -63,6 +63,7 @@ $farver: base, blue-light, red-light, green-light, yellow-light, purple-light,
 
 // Giver hver palet-variabel sin mørke værdi.
 @mixin moerk-palet {
+
 	@each $slug in $farver {
 		--wp--preset--color--#{$slug}: var(--wp--custom--dark--#{$slug});
 	}
@@ -75,7 +76,9 @@ $farver: base, blue-light, red-light, green-light, yellow-light, purple-light,
 }
 
 @media (prefers-color-scheme: dark) {
+
 	body {
+
 		@include moerk-palet;
 	}
 }
