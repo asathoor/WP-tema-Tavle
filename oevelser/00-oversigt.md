@@ -18,4 +18,4 @@
 - **Redigér `docs/theme.jsonc`, ikke `theme.json`.** theme.json bliver genereret ved `npm run build` og overskrives hver gang.
 - **Ændringer i Site Editoren gemmes i databasen,** ikke i temaets filer. Gemte ændringer har forrang for filerne. Ser en ændring i en fil ikke ud til at virke, så tjek, om skabelonen eller delen er tilpasset i Site Editoren, og nulstil den.
 - **Slå udviklingstilstand til under arbejdet** ved at tilføje `define( 'WP_DEVELOPMENT_MODE', 'theme' );` i `wp-config.php`. Så læser WordPress temaets filer på ny ved hver sidevisning. Fjern linjen igen, før et site går i luften.
-- **Test altid som besøgende,** dvs. i et privat vindue, hvor du ikke er logget ind. Adminbaren påvirker både udseende og målinger.
+- **Test altid som besøgende,** dvs. i et privat vindue, hvor du ikke er logget ind. Adminbaren påvirker både udseende og målinger. Her kan du med fordel bruge en browser, som DuckDuckGo.
